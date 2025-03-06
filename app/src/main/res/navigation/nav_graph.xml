@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.grocery_store.ui.login_signup.LoginFragment"
+        android:label=""
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardScreen"
+            app:destination="@id/dashboardScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.grocery_store.ui.login_signup.SignUpFragment"
+        android:label=""
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_dashboardScreen"
+            app:destination="@id/dashboardScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardScreen"
+        android:name="com.example.grocery_store.ui.DashboardScreen"
+        android:label="fragment_dashboard_screen"
+        tools:layout="@layout/fragment_dashboard_screen">
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
