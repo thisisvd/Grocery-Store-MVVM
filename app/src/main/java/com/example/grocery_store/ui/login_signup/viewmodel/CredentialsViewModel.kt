@@ -15,8 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CredentialsViewModel @Inject constructor(
-    private val repository: MainRepository,
-    private val sharedPref: PreferenceRepository
+    private val repository: MainRepository, private val sharedPref: PreferenceRepository
 ) : ViewModel() {
 
     private val _userData = MutableStateFlow<Resource<User>?>(null)
@@ -40,8 +39,10 @@ class CredentialsViewModel @Inject constructor(
         if (isSuccess > 0) {
             _userData.emit(Resource.Loading())
             repository.getUser(user.username, user.password).collect { user ->
-                _userData.emit(Resource.Success(user))
-                sharedPref.saveLoginState(user.userId)
+                if (user != null) {
+                    _userData.emit(Resource.Success(user))
+                    sharedPref.saveLoginState(user.userId)
+                }
             }
         } else {
             _userData.emit(Resource.Error("User already exists!"))

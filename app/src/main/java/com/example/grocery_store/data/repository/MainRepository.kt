@@ -27,78 +27,63 @@ class MainRepository @Inject constructor(
             "2L",
             199.0,
             Utils.drawableToByteArray(context, R.drawable.img_apple_grape_juice)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             2,
             "Bell Pepper",
             "1kg",
             120.0,
             Utils.drawableToByteArray(context, R.drawable.img_bell_pepper_red)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             3,
             "Coca Cola Can",
             "325ml",
             45.0,
             Utils.drawableToByteArray(context, R.drawable.img_coca_cola_can)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             4,
             "Diet Coke",
             "335ml",
             50.0,
             Utils.drawableToByteArray(context, R.drawable.img_diet_coke)
-        ),
-        GroceryItem(
-            5,
-            "Ginger",
-            "250gm",
-            60.0,
-            Utils.drawableToByteArray(context, R.drawable.img_ginger)
-        ),
-        GroceryItem(
+        ), GroceryItem(
+            5, "Ginger", "250gm", 60.0, Utils.drawableToByteArray(context, R.drawable.img_ginger)
+        ), GroceryItem(
             6,
             "Mayonnaise Eggless",
             "500gm",
             175.0,
             Utils.drawableToByteArray(context, R.drawable.img_mayonnais_eggless)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             7,
             "Natural Red Apple",
             "1kg",
             220.0,
             Utils.drawableToByteArray(context, R.drawable.img_natural_red_apple)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             8,
             "Orange Juice",
             "2L",
             210.0,
             Utils.drawableToByteArray(context, R.drawable.img_orange_juice)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             9,
             "Organic Bananas",
             "7pcs",
             90.0,
             Utils.drawableToByteArray(context, R.drawable.img_orange_juice)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             10,
             "Pepsi Can",
             "330ml",
             45.0,
             Utils.drawableToByteArray(context, R.drawable.img_pepsi_can)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             11,
             "Sprite Can",
             "325ml",
             45.0,
             Utils.drawableToByteArray(context, R.drawable.img_sprite_can)
-        ),
-        GroceryItem(
+        ), GroceryItem(
             12,
             "Broccoli",
             "500gm",

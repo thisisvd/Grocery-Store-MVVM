@@ -14,5 +14,5 @@ interface UserDao {
     suspend fun insertUser(user: User): Long
 
     @Query("SELECT * FROM user WHERE username=:username AND password=:password")
-    fun getUser(username: String, password: String): Flow<User>
+    fun getUser(username: String, password: String): Flow<User?>
 }
