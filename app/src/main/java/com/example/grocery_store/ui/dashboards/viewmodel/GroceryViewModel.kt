@@ -96,8 +96,8 @@ class GroceryViewModel @Inject constructor(
     private val _myCartItems = MutableStateFlow<List<GroceryCartItem>>(emptyList())
     val myCartItems: StateFlow<List<GroceryCartItem>> = _myCartItems
 
-    fun myCartItems() = viewModelScope.launch {
-        repository.getCartItems().collect { cartItems ->
+    fun myCartItems(userId: Int) = viewModelScope.launch {
+        repository.getCartItems(userId).collect { cartItems ->
             _myCartItems.emit(cartItems)
         }
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -31,6 +32,9 @@ class LoginFragment : Fragment() {
     // view model
     private val viewModel: CredentialsViewModel by viewModels()
 
+    // back press count var
+    private var onBackPressCount = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -48,6 +52,9 @@ class LoginFragment : Fragment() {
                     LoginFragmentDirections.actionLoginFragmentToDashboardScreen(viewModel.getLoginState())
                 findNavController().navigate(action)
             }
+
+            // handle on back pressed
+            handleOnBackPressed()
 
             // on click listeners
             onClickListeners()
@@ -124,6 +131,25 @@ class LoginFragment : Fragment() {
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
         imm?.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
+
+    // handle onBackPressed
+    private fun handleOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressCount++
+                    if (onBackPressCount == 1) {
+                        Snackbar.make(
+                            binding.root,
+                            "Press back again to close the app.",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        requireActivity().finish()
+                    }
+                }
+            })
     }
 
     override fun onDestroy() {

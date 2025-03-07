@@ -50,7 +50,7 @@ class MyCartFragment : Fragment() {
         binding.apply {
 
             // call items from my cart
-            groceryViewModel.myCartItems()
+            groceryViewModel.myCartItems(credViewModel.getLoginState())
 
             // init observers
             viewModelObservers()

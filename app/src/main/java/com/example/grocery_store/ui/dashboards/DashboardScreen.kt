@@ -195,7 +195,7 @@ class DashboardScreen : Fragment() {
 
                     R.id.action_logout -> {
                         credentialsViewModel.logout()
-                        findNavController().popBackStack()
+                        findNavController().navigate(DashboardScreenDirections.actionDashboardScreenToLoginFragment())
                         true
                     }
 

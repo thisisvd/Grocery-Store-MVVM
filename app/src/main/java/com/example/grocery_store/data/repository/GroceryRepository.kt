@@ -17,7 +17,7 @@ class GroceryRepository @Inject constructor(
 
     suspend fun insertItemInCart(item: GroceryCartItem) = cartItemDao.insertItemInCart(item)
 
-    fun getCartItems() = cartItemDao.getCartItems()
+    fun getCartItems(userId: Int) = cartItemDao.getCartItems(userId)
 
     fun getCartItem(userId: Int, itemId: Int) = cartItemDao.getCartItem(userId, itemId)
 

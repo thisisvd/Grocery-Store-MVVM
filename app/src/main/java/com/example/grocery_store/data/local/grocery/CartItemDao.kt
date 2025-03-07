@@ -14,8 +14,8 @@ interface CartItemDao {
     @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
     suspend fun insertItemInCart(item: GroceryCartItem): Long
 
-    @Query("SELECT * FROM grocery_cart_table WHERE orderStatus = 0")
-    fun getCartItems(): Flow<List<GroceryCartItem>>
+    @Query("SELECT * FROM grocery_cart_table WHERE userId=:userId AND orderStatus = 0")
+    fun getCartItems(userId: Int): Flow<List<GroceryCartItem>>
 
     @Query("SELECT * FROM grocery_cart_table WHERE userId=:userId AND itemId=:itemId")
     fun getCartItem(userId: Int, itemId: Int): List<GroceryCartItem>
