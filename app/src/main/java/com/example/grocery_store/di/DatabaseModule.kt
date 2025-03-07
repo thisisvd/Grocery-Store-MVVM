@@ -29,9 +29,25 @@ object DatabaseModule {
     @Provides
     fun provideUserDao(db: GroceryDatabase) = db.userDao
 
+    @Singleton
+    @Provides
+    fun provideGroceryItemDao(db: GroceryDatabase) = db.groceryItemDao
+
+    @Singleton
+    @Provides
+    fun provideCartItemDao(db: GroceryDatabase) = db.cartItemDao
+
     @Provides
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE)
+    }
+
+    @Provides
+    @Singleton
+    fun provideContext(
+        @ApplicationContext context: Context
+    ): Context {
+        return context
     }
 }

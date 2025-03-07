@@ -28,11 +28,38 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardScreen"
-        android:name="com.example.grocery_store.ui.DashboardScreen"
-        android:label="fragment_dashboard_screen"
+        android:name="com.example.grocery_store.ui.dashboards.DashboardScreen"
+        android:label="@string/groceries"
         tools:layout="@layout/fragment_dashboard_screen">
         <argument
             android:name="userId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_dashboardScreen_to_addItemsCartFragment"
+            app:destination="@id/addItemsCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemsCartFragment"
+        android:name="com.example.grocery_store.ui.dashboards.MyCartFragment"
+        android:label="@string/my_cart"
+        tools:layout="@layout/fragment_add_items_cart">
+        <action
+            android:id="@+id/action_addItemsCartFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.grocery_store.ui.dashboards.PaymentFragment"
+        android:label="@string/payment"
+        tools:layout="@layout/fragment_payment">
+        <action
+            android:id="@+id/action_paymentFragment_to_dashboardScreen"
+            app:destination="@id/dashboardScreen" />
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+        <argument
+            android:name="totalAmount"
+            app:argType="string" />
     </fragment>
 </navigation>

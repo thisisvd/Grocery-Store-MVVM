@@ -22,7 +22,7 @@
 
     <color name="horizontal_layout_red">#ED6060</color>
 
-    <color name="chip_color_bg">#80252F5C</color>
+    <color name="chip_color_bg">#121B46</color>
     <color name="yellow_chip_color_bg">#FBF5DC</color>
     <color name="blue_chip_color_bg">#E6EBF7</color>
     <color name="red_chip_color_bg">#F6E8E8</color>

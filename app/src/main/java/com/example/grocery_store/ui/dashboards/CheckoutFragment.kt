@@ -1,22 +1,22 @@
-package com.example.grocery_store.ui
+package com.example.grocery_store.ui.dashboards
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.grocery_store.databinding.FragmentAddItemsCartBinding
+import com.example.grocery_store.databinding.FragmentCheckoutBinding
 
-class AddItemsCartFragment : Fragment() {
+class CheckoutFragment : Fragment() {
 
     // view binding
-    private var _binding: FragmentAddItemsCartBinding? = null
+    private var _binding: FragmentCheckoutBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddItemsCartBinding.inflate(inflater, container, false)
+        _binding = FragmentCheckoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 

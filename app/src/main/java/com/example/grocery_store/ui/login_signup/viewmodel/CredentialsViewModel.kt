@@ -15,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CredentialsViewModel @Inject constructor(
-    private val repository: MainRepository, private val sharedPref: PreferenceRepository
+    private val repository: MainRepository,
+    private val sharedPref: PreferenceRepository
 ) : ViewModel() {
 
     private val _userData = MutableStateFlow<Resource<User>?>(null)
