@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Theme working colors-->
-    <color name="theme_color_unchangeable">#030B30</color>
+    <color name="theme_color_unchangeable">#121212</color>
     <color name="theme_color">@color/theme_color_unchangeable</color>
     <color name="navy_blue_color">#1045FF</color>
     <color name="light_blue_color">#02ADFF</color>
@@ -21,8 +21,7 @@
     <color name="view_line_color">@color/white</color>
 
     <color name="horizontal_layout_red">#ED6060</color>
-
-    <color name="chip_color_bg">#121B46</color>
+    <color name="chip_color_bg">#1E1E1E</color>
     <color name="yellow_chip_color_bg">#FBF5DC</color>
     <color name="blue_chip_color_bg">#E6EBF7</color>
     <color name="red_chip_color_bg">#F6E8E8</color>
