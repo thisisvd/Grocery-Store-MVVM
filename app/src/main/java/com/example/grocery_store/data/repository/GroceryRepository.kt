@@ -28,4 +28,6 @@ class GroceryRepository @Inject constructor(
         cartItemDao.updateStatusAllItemFromCart(userId)
 
     fun getTotalCountAndSum(userId: Int) = cartItemDao.getTotalCountAndSum(userId)
+
+    fun getCartHistoryItems(userId: Int) = cartItemDao.getCartHistoryItems(userId)
 }

@@ -28,4 +28,7 @@ interface CartItemDao {
 
     @Query("SELECT SUM(itemCount) AS totalCount, SUM(itemPrice * itemCount) AS totalSum FROM grocery_cart_table WHERE userId = :userId AND orderStatus = 0")
     fun getTotalCountAndSum(userId: Int): Flow<CartCountAndSum>
+
+    @Query("SELECT * FROM grocery_cart_table WHERE userId=:userId AND orderStatus = 1")
+    fun getCartHistoryItems(userId: Int): Flow<List<GroceryCartItem>>
 }

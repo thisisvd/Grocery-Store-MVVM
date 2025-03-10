@@ -195,6 +195,7 @@ class DashboardScreen : Fragment() {
 
                     R.id.action_logout -> {
                         credentialsViewModel.logout()
+                        groceryViewModel.clearData()
                         findNavController().navigate(DashboardScreenDirections.actionDashboardScreenToLoginFragment())
                         true
                     }

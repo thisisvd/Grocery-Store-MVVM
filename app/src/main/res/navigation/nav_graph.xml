@@ -65,4 +65,9 @@
             android:name="totalAmount"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.grocery_store.ui.dashboards.HistoryFragment"
+        android:label="@string/history_items"
+        tools:layout="@layout/fragment_history" />
 </navigation>

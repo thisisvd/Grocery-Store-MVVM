@@ -41,40 +41,37 @@ class GroceryViewModel @Inject constructor(
     }
 
     fun updateItemInCart(
-        item: GroceryCartItem,
-        isIncrement: Boolean,
-        itemStatus: (Boolean) -> Unit
-    ) =
-        viewModelScope.launch {
-            var cartItem = item
-            CoroutineScope(Dispatchers.IO).launch {
-                val presentItemList = repository.getCartItem(item.userId, item.itemId)
-                if (presentItemList.isNotEmpty()) {
-                    val presentItem = presentItemList[0]
-                    val newCount =
-                        if (isIncrement) presentItem.itemCount + 1 else presentItem.itemCount - 1
+        item: GroceryCartItem, isIncrement: Boolean, itemStatus: (Boolean) -> Unit
+    ) = viewModelScope.launch {
+        var cartItem = item
+        CoroutineScope(Dispatchers.IO).launch {
+            val presentItemList = repository.getCartItem(item.userId, item.itemId)
+            if (presentItemList.isNotEmpty()) {
+                val presentItem = presentItemList[0]
+                val newCount =
+                    if (isIncrement) presentItem.itemCount + 1 else presentItem.itemCount - 1
 
-                    if (newCount <= 0) {
-                        deleteItemFromCart(presentItem.userId, presentItem.itemId)
-                        itemStatus(true)
-                        return@launch
-                    }
-
-                    cartItem = GroceryCartItem(
-                        cartItemId = presentItem.cartItemId,
-                        itemId = presentItem.itemId,
-                        itemName = presentItem.itemName,
-                        itemDescription = presentItem.itemDescription,
-                        itemPrice = presentItem.itemPrice,
-                        itemCount = newCount,
-                        itemImage = presentItem.itemImage,
-                        userId = presentItem.userId
-                    )
+                if (newCount <= 0) {
+                    deleteItemFromCart(presentItem.userId, presentItem.itemId)
+                    itemStatus(true)
+                    return@launch
                 }
-                val status = repository.insertItemInCart(cartItem)
-                itemStatus(status >= 0)
+
+                cartItem = GroceryCartItem(
+                    cartItemId = presentItem.cartItemId,
+                    itemId = presentItem.itemId,
+                    itemName = presentItem.itemName,
+                    itemDescription = presentItem.itemDescription,
+                    itemPrice = presentItem.itemPrice,
+                    itemCount = newCount,
+                    itemImage = presentItem.itemImage,
+                    userId = presentItem.userId
+                )
             }
+            val status = repository.insertItemInCart(cartItem)
+            itemStatus(status >= 0)
         }
+    }
 
     fun deleteItemFromCart(userId: Int, itemId: Int) = viewModelScope.launch {
         repository.deleteItemFromCart(userId, itemId)
@@ -100,5 +97,16 @@ class GroceryViewModel @Inject constructor(
         repository.getCartItems(userId).collect { cartItems ->
             _myCartItems.emit(cartItems)
         }
+    }
+
+    fun getCartHistoryItems(userId: Int) = viewModelScope.launch {
+        repository.getCartHistoryItems(userId).collect { cartItems ->
+            _myCartItems.emit(cartItems)
+        }
+    }
+
+    fun clearData() = viewModelScope.launch {
+        _myCartItems.emit(emptyList())
+        _groceryItems.emit(null)
     }
 }
